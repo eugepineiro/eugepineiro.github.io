@@ -484,7 +484,7 @@ function enforceHighlightTags() {
       if (!hasNlp) {
         var nlpTag = document.createElement('span');
         nlpTag.className = 'lang-tag subtitle-tag';
-        nlpTag.textContent = 'Natural Language Processing';
+        nlpTag.textContent = 'NLP';
         nlpTag.style.backgroundColor = '#8f256d';
         nlpTag.style.color = getContrastTextColor('#8f256d');
         nlpTag.style.borderColor = 'transparent';
@@ -524,7 +524,7 @@ function enforceSpeechNlpTagInProjects() {
     if (!hasNlp) {
       var nlpTag = document.createElement('span');
       nlpTag.className = 'lang-tag subtitle-tag';
-      nlpTag.textContent = 'Natural Language Processing';
+      nlpTag.textContent = 'NLP';
       nlpTag.style.backgroundColor = '#8f256d';
       nlpTag.style.color = getContrastTextColor('#8f256d');
       nlpTag.style.borderColor = 'transparent';

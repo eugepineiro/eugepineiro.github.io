@@ -20,6 +20,13 @@
   --shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 
+[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 14% -8%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 40%),
+    radial-gradient(circle at 92% 0%, color-mix(in srgb, var(--accent-2) 88%, #11121a), transparent 44%),
+    linear-gradient(165deg, #10111a 0%, #151829 56%, #101420 100%);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -45,8 +52,15 @@ button:focus-visible {
     radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 40%),
     var(--surface);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: 0 16px 30px color-mix(in srgb, var(--accent) 28%, transparent);
   overflow: hidden;
+}
+
+[data-theme="dark"] .profile-header {
+  background:
+    radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 42%),
+    linear-gradient(145deg, #24283b 0%, #1f2335 52%, #1a1f2f 100%);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
 }
 
 .profile-header .text-white {
@@ -118,7 +132,6 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(8px);
   padding: 0.65rem 0.2rem 0.75rem;
@@ -150,11 +163,19 @@ button:focus-visible {
   vertical-align: -0.05em;
 }
 
+.tab-icon svg {
+  fill: var(--accent);
+}
+
+[data-theme="dark"] .tab-icon svg {
+  fill: #ffffff;
+}
+
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link.active {
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  background: var(--surface);
   border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
   border-bottom-color: var(--accent);
   box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 24%, transparent);

@@ -97,6 +97,7 @@ function curateHighlights() {
     ordered.push(speech);
   }
   ordered = ordered.concat(remaining);
+  ordered = ordered.slice(0, 6);
 
   highlightsRow.innerHTML = '';
   ordered.forEach(function (col) {
@@ -113,19 +114,50 @@ function curateHighlights() {
 }
 
 function ensureHighlightStar(cardCol) {
-  var firstRow = cardCol.querySelector('.card .card-body > .row');
+  var cardBody = cardCol.querySelector('.card .card-body');
+  if (!cardBody) {
+    return;
+  }
+
+  var firstRow = cardBody.querySelector(':scope > .row');
+  var titleNode = cardBody.querySelector(':scope > .card-title');
+
+  if (!firstRow && titleNode) {
+    firstRow = document.createElement('div');
+    firstRow.className = 'row';
+
+    var titleCol = document.createElement('div');
+    titleCol.className = 'col';
+    titleCol.appendChild(titleNode);
+    firstRow.appendChild(titleCol);
+
+    cardBody.insertBefore(firstRow, cardBody.firstChild);
+  }
+
   if (!firstRow) {
     return;
   }
 
-  if (firstRow.querySelector('.bi-star-fill')) {
-    return;
+  var existingStars = Array.from(cardBody.querySelectorAll('.bi-star-fill'));
+  existingStars.forEach(function (star) {
+    var holder = star.closest('.col');
+    if (holder && holder.parentElement !== firstRow) {
+      holder.remove();
+    }
+  });
+
+  var starCol = firstRow.querySelector(':scope > .col:nth-child(2)');
+  if (starCol && !starCol.querySelector('.bi-star-fill')) {
+    starCol.remove();
+    starCol = null;
   }
 
-  var starCol = document.createElement('div');
-  starCol.className = 'col d-flex flex-row-reverse';
-  starCol.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFCE33" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>';
-  firstRow.appendChild(starCol);
+  if (!starCol) {
+    starCol = document.createElement('div');
+    starCol.className = 'col d-flex flex-row-reverse';
+    starCol.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFCE33" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>';
+    firstRow.appendChild(starCol);
+  }
 }
 
 function parseColorToRgb(color) {
@@ -400,6 +432,121 @@ function addTopicTags(card, container) {
   });
 }
 
+function enforceHighlightTags() {
+  var highlightCards = Array.from(document.querySelectorAll('#highlights .card'));
+
+  highlightCards.forEach(function (card) {
+    var cardBody = card.querySelector('.card-body');
+    if (!cardBody) {
+      return;
+    }
+
+    var tagContainer = card.querySelector('.lang-tags');
+    if (!tagContainer) {
+      tagContainer = document.createElement('div');
+      tagContainer.className = 'lang-tags';
+      var footerRow = cardBody.querySelector(':scope > .row.mt-2');
+      if (footerRow) {
+        cardBody.insertBefore(tagContainer, footerRow);
+      } else {
+        cardBody.appendChild(tagContainer);
+      }
+    }
+
+    Array.from(tagContainer.querySelectorAll('.lang-tag')).forEach(function (tag) {
+      if (tag.textContent.trim().toLowerCase() === 'machine learning') {
+        tag.remove();
+      }
+    });
+
+    var hasAi = Array.from(tagContainer.querySelectorAll('.lang-tag')).some(function (tag) {
+      return tag.textContent.trim().toLowerCase() === 'artificial intelligence';
+    });
+
+    if (!hasAi) {
+      var aiTag = document.createElement('span');
+      aiTag.className = 'lang-tag topic-tag topic-ai';
+      aiTag.textContent = 'Artificial Intelligence';
+      tagContainer.appendChild(aiTag);
+    }
+
+    var title = ((card.querySelector('.card-title') || {}).textContent || '').trim().toLowerCase();
+    if (title === 'speech to text') {
+      Array.from(tagContainer.querySelectorAll('.lang-tag')).forEach(function (tag) {
+        if (tag.textContent.trim().toLowerCase() === 'paper') {
+          tag.remove();
+        }
+      });
+
+      var hasNlp = Array.from(tagContainer.querySelectorAll('.lang-tag')).some(function (tag) {
+        return tag.textContent.trim().toLowerCase() === 'natural language processing';
+      });
+      if (!hasNlp) {
+        var nlpTag = document.createElement('span');
+        nlpTag.className = 'lang-tag subtitle-tag';
+        nlpTag.textContent = 'Natural Language Processing';
+        nlpTag.style.backgroundColor = '#8f256d';
+        nlpTag.style.color = getContrastTextColor('#8f256d');
+        nlpTag.style.borderColor = 'transparent';
+        tagContainer.appendChild(nlpTag);
+      }
+    }
+  });
+}
+
+function enforceSpeechNlpTagInProjects() {
+  var speechCards = Array.from(document.querySelectorAll('#projects .card')).filter(function (card) {
+    var title = ((card.querySelector('.card-title') || {}).textContent || '').trim().toLowerCase();
+    return title === 'speech to text';
+  });
+
+  speechCards.forEach(function (card) {
+    var cardBody = card.querySelector('.card-body');
+    if (!cardBody) {
+      return;
+    }
+
+    var tagContainer = card.querySelector('.lang-tags');
+    if (!tagContainer) {
+      tagContainer = document.createElement('div');
+      tagContainer.className = 'lang-tags';
+      var footerRow = cardBody.querySelector(':scope > .row.mt-2');
+      if (footerRow) {
+        cardBody.insertBefore(tagContainer, footerRow);
+      } else {
+        cardBody.appendChild(tagContainer);
+      }
+    }
+
+    var hasNlp = Array.from(tagContainer.querySelectorAll('.lang-tag')).some(function (tag) {
+      return tag.textContent.trim().toLowerCase() === 'natural language processing';
+    });
+    if (!hasNlp) {
+      var nlpTag = document.createElement('span');
+      nlpTag.className = 'lang-tag subtitle-tag';
+      nlpTag.textContent = 'Natural Language Processing';
+      nlpTag.style.backgroundColor = '#8f256d';
+      nlpTag.style.color = getContrastTextColor('#8f256d');
+      nlpTag.style.borderColor = 'transparent';
+      tagContainer.appendChild(nlpTag);
+    }
+  });
+}
+
+function sortCardTagsAlphabetically() {
+  var containers = Array.from(document.querySelectorAll('.card .lang-tags'));
+
+  containers.forEach(function (container) {
+    var tags = Array.from(container.querySelectorAll(':scope > .lang-tag'));
+    tags.sort(function (a, b) {
+      return a.textContent.trim().localeCompare(b.textContent.trim(), undefined, { sensitivity: 'base' });
+    });
+    tags.forEach(function (tag) {
+      container.appendChild(tag);
+    });
+  });
+}
+
 function normalizePublicationAuthors() {
   var publicationCards = Array.from(document.querySelectorAll('.card')).filter(function (card) {
     var subtitle = (card.querySelector('.card-subtitle') || {}).textContent || '';
@@ -561,9 +708,9 @@ function makeProjectCardsClickable() {
 
     var linkText = (link.textContent || '').trim().toLowerCase();
     var isProject = /see project/.test(linkText);
-    var isPaper = Boolean(card.closest('#papers')) && /see publication/.test(linkText);
+    var isPublication = /see publication/.test(linkText);
 
-    if (!isProject && !isPaper) {
+    if (!isProject && !isPublication) {
       return;
     }
 
@@ -598,6 +745,9 @@ document.addEventListener('DOMContentLoaded', function () {
   curateHighlights();
   normalizePublicationAuthors();
   transformLanguageTags();
+  enforceHighlightTags();
+  enforceSpeechNlpTagInProjects();
+  sortCardTagsAlphabetically();
   makeProjectCardsClickable();
   setupTagFiltering();
 });

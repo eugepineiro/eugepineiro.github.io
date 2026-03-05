@@ -203,6 +203,13 @@ button:focus-visible {
 .card .row.mt-2 > .col.text-secondary,
 .card .row.mt-2 > .text-secondary {
   margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.card .row.mt-2 > .col.text-secondary > * {
+  margin-left: auto;
   text-align: right;
 }
 
@@ -293,6 +300,17 @@ button:focus-visible {
   background: var(--surface);
   color: var(--text);
   padding: 0.35rem 0.6rem;
+}
+
+.site-footer {
+  margin: 2rem auto 1rem;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
 @media (min-width: 768px) {

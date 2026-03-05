@@ -261,6 +261,16 @@ button:focus-visible {
   border: 1px solid var(--border);
 }
 
+.subtitle-tag {
+  background: color-mix(in srgb, var(--surface) 35%, #e8ecf7);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.subtitle-hidden {
+  display: none;
+}
+
 .tag-filter-bar {
   display: flex;
   align-items: center;

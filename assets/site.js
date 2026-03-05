@@ -210,6 +210,7 @@ function transformLanguageTags() {
     }
 
     var sharedContainer = addKeywordTags(card, languageContainer);
+    sharedContainer = addSubtitleTag(card, sharedContainer || languageContainer);
     addTopicTags(card, sharedContainer || languageContainer);
   });
 }
@@ -273,6 +274,75 @@ function addKeywordTags(card, container) {
   return tagContainer;
 }
 
+function addSubtitleTag(card, container) {
+  var subtitleNode = card.querySelector('.card-subtitle');
+  if (!subtitleNode) {
+    return container;
+  }
+
+  var subtitleText = subtitleNode.textContent.trim();
+  if (!subtitleText) {
+    return container;
+  }
+
+  subtitleNode.classList.add('subtitle-hidden');
+
+  var subtitleKey = subtitleText.toLowerCase();
+
+  if (
+    subtitleKey === 'image processing and analysis' ||
+    subtitleKey === 'artificial intelligence' ||
+    subtitleKey === 'publication ieee'
+  ) {
+    return container;
+  }
+
+  var tagContainer = container;
+  var cardBody = card.querySelector('.card-body');
+  if (!tagContainer && cardBody) {
+    tagContainer = document.createElement('div');
+    tagContainer.className = 'lang-tags';
+    var footerRow = cardBody.querySelector(':scope > .row.mt-2');
+    if (footerRow) {
+      cardBody.insertBefore(tagContainer, footerRow);
+    } else {
+      cardBody.appendChild(tagContainer);
+    }
+  }
+
+  if (!tagContainer) {
+    return container;
+  }
+
+  var exists = Array.from(tagContainer.querySelectorAll('.subtitle-tag')).some(function (node) {
+    return node.textContent.trim().toLowerCase() === subtitleText.toLowerCase();
+  });
+  if (exists) {
+    return tagContainer;
+  }
+
+  var subtitleColors = {
+    'natural language processing': '#8f256d',
+    'videogame': '#eb8913',
+    'virtual reality': '#e6c54c',
+    'bioinformatics': '#2eab31',
+    'cloud computing': '#941217',
+    'machine learning': '#e35fc9'
+  };
+
+  var tag = document.createElement('span');
+  tag.className = 'lang-tag subtitle-tag';
+  tag.textContent = subtitleText;
+  if (subtitleColors[subtitleKey]) {
+    tag.style.backgroundColor = subtitleColors[subtitleKey];
+    tag.style.color = getContrastTextColor(subtitleColors[subtitleKey]);
+    tag.style.borderColor = 'transparent';
+  }
+  tagContainer.appendChild(tag);
+
+  return tagContainer;
+}
+
 function addTopicTags(card, container) {
   var cardBody = card.querySelector('.card-body');
   if (!cardBody) {
@@ -288,7 +358,7 @@ function addTopicTags(card, container) {
   var isPublicationIeee = subtitle.trim().toLowerCase() === 'publication ieee';
 
   if (isPaperOrConference || /\bartificial intelligence\b|\bai\b|\bdeep learning\b/.test(summary)) {
-    tags.push({ label: 'Artficial Intelligence', className: 'topic-ai' });
+    tags.push({ label: 'Artificial Intelligence', className: 'topic-ai' });
   }
 
   if (isPublicationIeee) {

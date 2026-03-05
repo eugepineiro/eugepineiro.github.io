@@ -67,7 +67,7 @@ button:focus-visible {
 }
 
 .hero-kicker {
-  font-size: 0.72rem;
+  font-size: 0.92rem;
   letter-spacing: 0.16em;
   font-weight: 700;
   color: var(--accent);
@@ -140,6 +140,14 @@ button:focus-visible {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-shadow: none;
   transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.tab-icon {
+  display: inline-block;
+  margin-right: 0.45rem;
+  font-size: 1.05em;
+  line-height: 1;
+  vertical-align: -0.05em;
 }
 
 .nav-tabs .nav-link:hover,

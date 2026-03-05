@@ -41,9 +41,12 @@ button:focus-visible {
 
 .profile-header {
   position: relative;
-  background: var(--surface);
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 40%),
+    var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .profile-header .text-white {
@@ -56,6 +59,59 @@ button:focus-visible {
 
 .profile-header .icon {
   color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  padding: 0.4rem 0.8rem;
+  margin: 0.2rem;
+}
+
+.hero-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4.2vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.hero-summary {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.02rem;
+}
+
+.hero-roles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.hero-role {
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  padding: 0;
+  font-weight: 700;
+  font-size: 1.22rem;
+}
+
+.hero-role + .hero-role::before {
+  content: "•";
+  margin-right: 0.55rem;
+  color: var(--accent);
+}
+
+.hero-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-tabs {

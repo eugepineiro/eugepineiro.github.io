@@ -7,24 +7,19 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="assets/theme.js"></script>
-    <link rel="stylesheet" href="assets/styles.css">
 
     <title>Eugenia Piñeiro</title>
   </head>
   <body> 
-        <div class="p-5 text-center profile-header mb-4">
-            <p class="hero-kicker mb-2">PORTFOLIO</p>
-            <h1 class="mb-2 text-white hero-title">Eugenia Sol Piñeiro</h1>
-            <div class="hero-roles mb-3">
-              <span class="hero-role">Computer Engineer</span>
-              <span class="hero-role">Artificial Intelligence Researcher</span>
-            </div>
+        <div class="p-5 text-center bg-dark mb-4">
+            <h1 class="mb-3 text-white">Eugenia Sol Piñeiro - Github Pages</h1>
+            <h4 class="mb-3 text-secondary">Computer Engineer</h4>
+            <div class="mb-3 text-secondary">Proactive, enthusiastic and always eager to learn. </div>
             <div class="row">
-                <div class="col hero-links">
+                <div class="col">
                     <a href="https://github.com/eugepineiro" class="btn icon">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-github" viewBox="0 0 16 16">
                                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
                             </svg>
                         </span>
@@ -38,20 +33,6 @@
                         </span>
                         <span class="text-white">eugenia-piñeiro</span>
                     </a>
-                    <a href="https://scholar.google.com/citations?user=V3Zq3qsAAAAJ&hl=es&authuser=1" class="btn icon">
-                        <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 3L1 8.5l11 5.5 9-4.5V16h2V8.5z" fill="#4285F4"/>
-                                <circle cx="12" cy="16.5" r="3" fill="#5F9CF6"/>
-                                <path d="M6 14.8v2.8c0 1.7 2.7 3.4 6 3.4s6-1.7 6-3.4v-2.8l-6 3z" fill="#8AB4F8"/>
-                            </svg>
-                        </span>
-                        <span class="text-white">Google Scholar</span>
-                    </a>
-                    <button id="theme-toggle" class="theme-toggle ms-2" type="button" aria-pressed="false" aria-label="Toggle dark mode">
-                      <span class="theme-icon" aria-hidden="true">🌙</span>
-                      <span class="theme-text">Dark</span>
-                    </button>
                 </div>
             </div> 
         </div> 
@@ -70,14 +51,13 @@
 
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link active" id="highlights-tab" data-bs-toggle="tab" data-bs-target="#highlights" type="button" role="tab" aria-controls="highlights" aria-selected="true"><span class="tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M852-212 732-332l56-56 120 120-56 56ZM708-692l-56-56 120-120 56 56-120 120Zm-456 0L132-812l56-56 120 120-56 56ZM108-212l-56-56 120-120 56 56-120 120Zm246-75 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-361Z"/></svg></span>Highlights</button>
-              <button class="nav-link" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects" type="button" role="tab" aria-controls="projects" aria-selected="false"><span class="tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H160v400Zm140-40-56-56 103-104-104-104 57-56 160 160-160 160Zm180 0v-80h240v80H480Z"/></svg></span>Projects</button>
-              <button class="nav-link" id="papers-tab" data-bs-toggle="tab" data-bs-target="#papers" type="button" role="tab" aria-controls="papers" aria-selected="false"><span class="tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454ZM260-320q47 0 91.5 10.5T440-278v-394q-41-24-87-36t-93-12q-36 0-71.5 7T120-692v396q35-12 69.5-18t70.5-6Zm260 42q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q46-24 96-36t102-12q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 102 12t96 36q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59ZM280-494Z"/></svg></span>Papers</button>
-              <button class="nav-link" id="conferences-tab" data-bs-toggle="tab" data-bs-target="#conferences" type="button" role="tab" aria-controls="conferences" aria-selected="false"><span class="tab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m798-322-62-62q44-41 69-97t25-119q0-63-25-118t-69-96l62-64q56 53 89 125t33 153q0 81-33 153t-89 125ZM670-450l-64-64q18-17 29-38.5t11-47.5q0-26-11-47.5T606-686l64-64q32 29 50 67.5t18 82.5q0 44-18 82.5T670-450Zm-310 10q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM40-120v-112q0-33 17-62t47-44q51-26 115-44t141-18q77 0 141 18t115 44q30 15 47 44t17 62v112H40Zm80-80h480v-32q0-11-5.5-20T580-266q-36-18-92.5-36T360-320q-71 0-127.5 18T140-266q-9 5-14.5 14t-5.5 20v32Zm296.5-343.5Q440-567 440-600t-23.5-56.5Q393-680 360-680t-56.5 23.5Q280-633 280-600t23.5 56.5Q327-520 360-520t56.5-23.5ZM360-600Zm0 400Z"/></svg></span>Conferences</button>
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Highlights</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Projects</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-paper" type="button" role="tab" aria-controls="nav-paper" aria-selected="false">Papers & Conferences</button>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="highlights" role="tabpanel" aria-labelledby="highlights-tab">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 
                 <div class="row mt-2">
 
@@ -245,67 +225,74 @@
                       <div class="card d-flex justify-content-center mt-2" style="width: 18rem;">
                           <div class="card-body">
                             <div class="row">
-                                <div class ="col"><h5 class="card-title">A Transformer-Based Anomaly Detection System for OCT Image Embeddings</h5></div>
+                                <div class ="col"><h5 class="card-title">Supervised Learning</h5></div>
                                 <div class="col d-flex flex-row-reverse"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFCE33" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
                             </div> 
-                            <h6 class="card-subtitle mb-2 text-muted">Publication IEEE</h6>
-                            <p class="card-text">E.S Piñeiro et al. AI system for detecting clinically relevant anomalies in retinal images (Autoimmune Retinopathy) using a Transformer-based Deep Learning model.</p>
-                            <p>keywords: {Deep learning;Hypertension;Pathology;Retinopathy;Computational modeling;Transformers;Retina;Feature extraction;Diabetes;Medical diagnostic imaging;Transformers;Image Processing;Deep Learning;Retinopathy},</p>
+                            <h6 class="card-subtitle mb-2 text-muted">Artificial Intelligence</h6>
+                            <p class="card-text">Implementation of a Step Simple Layer Perceptron, Linear Simple Layer Perceptron and Multilayer Perceptron with Momentum optimization from scratch.</p>
+                          <div>
+                              <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#3572A5" class="bi bi-circle-fill mr-2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg> </span>
+                              <span class="text-secondary">Python</span>
+                          </div>
                           <div class=" row mt-2">
                               
                               <div class="col ">
-                                  <a href="https://ieeexplore.ieee.org/document/11058724" class="card-link ">See Publication</a> 
+                                  <a href="https://github.com/ncomerci/TP3-SIA" class="card-link ">See Project</a> 
                               </div> 
                               <div class="col text-secondary d-flex flex-row-reverse">
-                                  Dec 2024 - Jun 2025
+                                  Apr 2021
                               </div>
                           </div>
                           </div>
                       </div>        
                     </div>
-
+          
                     <div class="col">
                       <div class="card d-flex justify-content-center mt-2" style="width: 18rem;">
                           <div class="card-body">
                             <div class="row">
-                                <div class ="col"><h5 class="card-title">Variational Autoencoder as a Data Augmentation tool for Confocal Microscopy Images</h5></div>
+                                <div class ="col"><h5 class="card-title">Genetic Algorithms</h5></div>
                                 <div class="col d-flex flex-row-reverse"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFCE33" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
                             </div> 
-                            <h6 class="card-subtitle mb-2 text-muted">Publication IEEE</h6>
-                            <p class="card-text">E. S. Piñeiro et al. Synthetic image generation to imitate the penetration process of Topotecan for Retinoblastoma microscopy images. For this purpose, a Variational Autoencoder is applied as a data augmentation technique.</p>
-                            <p>keywords: {Drugs;Chemotherapy;Microscopy;Medical services;Maintenance engineering;Data augmentation;Retina;Microscopy;Deep Learning;Retinoblastoma;Autoencoders;Image Processing;Machine Learning},</p>
+                            <h6 class="card-subtitle mb-2 text-muted">Artificial Intelligence</h6>
+                            <p class="card-text">Find the best configurations of a game character (height and equipment) using different selection, crossover and mutation methods</p>
+                          <div>
+                              <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#3572A5" class="bi bi-circle-fill mr-2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg> </span>
+                              <span class="text-secondary">Python</span>
+                          </div>
                           <div class=" row mt-2">
                               
                               <div class="col ">
-                                  <a href="https://ieeexplore.ieee.org/abstract/document/10178851" class="card-link ">See Publication</a> 
+                                  <a href="https://github.com/eugepineiro/TP2-SIA" class="card-link ">See Project</a> 
                               </div> 
                               <div class="col text-secondary d-flex flex-row-reverse">
-                                  Jun 2021 - Jun 2023
+                                  Apr 2021
                               </div>
                           </div>
                           </div>
                       </div>        
                     </div>
+          
                     <div class="col">
                       <div class="card d-flex justify-content-center mt-2" style="width: 18rem;">
                           <div class="card-body">
                             <div class="row">
-                                <div class ="col"><h5 class="card-title">Speech to Text</h5></div>
+                                <div class ="col"><h5 class="card-title">Search Methods</h5></div>
                                 <div class="col d-flex flex-row-reverse"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#FFCE33" class="bi bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg></div>
                             </div> 
-                            <h6 class="card-subtitle mb-2 text-muted">Publication IEEE</h6>
-                            <p class="card-text">Automatic Speech Recognition AI agent using state-of-the-art Transformers. Provides english and spanish transcription from audio files</p>
-                            <div>
-                                <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#3572A5" class="bi bi-circle-fill mr-2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg> </span>
-                                <span class="text-secondary">Python</span>
-                            </div>
+                            <h6 class="card-subtitle mb-2 text-muted">Artificial Intelligence</h6>
+                            <p class="card-text">Find optimal solution for Sokoban game using informed and uninformed search methods</p>
+                          <div>
+                              <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#3572A5" class="bi bi-circle-fill mr-2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg> </span>
+                              <span class="text-secondary">Python</span>
+                          </div>
                           <div class=" row mt-2">
                               
                               <div class="col ">
-                                  <a href="https://github.com/eugepineiro/speech-to-text" class="card-link ">See Project</a>  
+                                  <a href="https://github.com/scottlin19/TP1-SIA" class="card-link ">See Project</a> 
                               </div> 
                               <div class="col text-secondary d-flex flex-row-reverse">
-                                  Jan 2024
+                                  Mar 2021
                               </div>
                           </div>
                           </div>
@@ -316,7 +303,7 @@
                   </div>
 
             </div>
-            <div class="tab-pane fade" id="projects" role="tabpanel" aria-labelledby="projects-tab">
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 
                 <div class="row mt-2">
                     <div class="col">
@@ -325,11 +312,11 @@
                               <h5 class="card-title">Speech to Text</h5>
                               <h6 class="card-subtitle mb-2 text-muted">Artificial Intelligence</h6>
                               <p class="card-text">Automatic Speech Recognition AI agent using state-of-the-art Transformers. Provides english and spanish transcription from audio files.</p>
-                              <div>
-                                  <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#3572A5" class="bi bi-circle-fill mr-2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg> </span>
-                                  <span class="text-secondary">Python</span>
-                              </div>
-                            <div class="row mt-2">
+                            <div>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#3572A5" class="bi bi-circle-fill mr-2" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg> </span>
+                                <span class="text-secondary">Python</span>
+                            </div>
+                            <div class=" row mt-2">
                                 
                                 <div class="col ">
                                     <a href="https://github.com/eugepineiro/speech-to-text" class="card-link ">See Project</a> 
@@ -1200,29 +1187,7 @@
           
                   </div>
             </div>
-            <div class="tab-pane fade" id="papers" role="tabpanel" aria-labelledby="papers-tab">
-                <div class="col">
-                    <div class="card d-flex justify-content-center mt-2">
-                        <div class="card-body">
-                          <div class="row">
-                              <div class ="col"><h5 class="card-title">A Transformer-Based Anomaly Detection System for OCT Image Embeddings</h5></div>
-                              </div>
-                          <h6 class="card-subtitle mb-2 text-muted">Publication IEEE</h6>
-                          <p class="card-text">E. S. Piñeiro, A. Schlaen, R. Ramele and J. Gambini, "A Transformer-Based Anomaly Detection System for OCT Image Embeddings," 2025 IEEE 38th International Symposium on Computer-Based Medical Systems (CBMS), Madrid, Spain, 2025, pp. 969-972, doi: 10.1109/CBMS65348.2025.00193.</p>
-                           <p>keywords: {Deep learning;Hypertension;Pathology;Retinopathy;Computational modeling;Transformers;Retina;Feature extraction;Diabetes;Medical diagnostic imaging;Transformers;Image Processing;Deep Learning;Retinopathy},</p>
-                        
-                        <div class=" row mt-2">
-                            
-                            <div class="col ">
-                                <a href="https://ieeexplore.ieee.org/document/11058724" class="card-link ">See Publication</a> 
-                            </div>  
-                            <div class="col text-secondary d-flex flex-row-reverse">
-                                Dec 2024 - Jun 2025
-                            </div>
-                        </div>
-                        </div>
-                    </div>        
-                </div>
+            <div class="tab-pane fade show active" id="nav-paper" role="tabpanel" aria-labelledby="nav-paper-tab">
                 <div class="col">
                     <div class="card d-flex justify-content-center mt-2">
                         <div class="card-body">
@@ -1272,28 +1237,6 @@
                     <div class="card d-flex justify-content-center mt-2">
                         <div class="card-body">
                           <div class="row">
-                              <div class ="col"><h5 class="card-title">2025 IEEE 38th International Symposium on Computer-Based Medical Systems (CBMS)</h5></div>
-                              </div>
-                          <h6 class="card-subtitle mb-2 text-muted">Conference</h6>
-                          <p class="card-text">Presented E. S. Piñeiro et al., "A Transformer-Based Anomaly Detection System for OCT Image Embeddings," 2025 IEEE 38th International Symposium on Computer-Based Medical Systems (CBMS), Madrid, Spain, 2025, pp. 969-972, doi: 10.1109/CBMS65348.2025.00193.</p>
-                          <p>keywords: {Deep learning;Hypertension;Pathology;Retinopathy;Computational modeling;Transformers;Retina;Feature extraction;Diabetes;Medical diagnostic imaging;Transformers;Image Processing;Deep Learning;Retinopathy},</p>
-                        
-                        <div class=" row mt-2">
-                            
-                            <div class="col ">
-                                <p><b><i>Madrid, Spain</b></i></p> 
-                            </div>  
-                            <div class="col text-secondary d-flex flex-row-reverse">
-                                Jun 2025
-                            </div>
-                        </div>
-                        </div>
-                    </div>        
-                </div>
-                <div class="col">
-                    <div class="card d-flex justify-content-center mt-2">
-                        <div class="card-body">
-                          <div class="row">
                               <div class ="col"><h5 class="card-title">Deep Learning Methods in Analysis and Interpretation of Microscopy Images</h5></div>
                               </div>
                           <h6 class="card-subtitle mb-2 text-muted">Publication</h6>
@@ -1315,7 +1258,7 @@
                     <div class="card d-flex justify-content-center mt-2">
                         <div class="card-body">
                           <div class="row">
-                              <div class ="col"><h5 class="card-title">2022 Interdisciplinary Conference on Advanced Analysis of Images and Signals (JIAAIS)</h5></div>
+                              <div class ="col"><h5 class="card-title">Interdisciplinary Conference on Advanced Analysis of Images and Signals - JIAAIS 2022</h5></div>
                               </div>
                           <h6 class="card-subtitle mb-2 text-muted">Conference</h6>
                           <p class="card-text">Presented Deep Learning Methods in Analysis and Interpretation of Microscopy Images at JIAAIS 2022. AJEA (Actas De Jornadas Y Eventos Académicos De UTN), (AJEA 31). https://doi.org/10.33414/ajea.1363.2024</p>
@@ -1334,20 +1277,13 @@
                 <div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="conferences" role="tabpanel" aria-labelledby="conferences-tab">
-              <div class="row mt-2" id="conferences-list"></div>
-            </div>
           </div>
 
         
       </div>
 
-
       
     
-    <footer class="site-footer container">
-      © Eugenia Sol - AI Engineer - Last updated: March 2026
-    </footer>
-    <script src="assets/site.js"></script>
+    
   </body>
 </html>

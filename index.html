@@ -7,21 +7,29 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <script src="assets/theme.js"></script>
     <link rel="stylesheet" href="assets/styles.css">
 
     <title>Eugenia Piñeiro</title>
   </head>
-  <body> 
-        <div class="p-5 text-center profile-header mb-4">
-            <p class="hero-kicker mb-2">PORTFOLIO</p>
-            <h1 class="mb-2 text-white hero-title">Eugenia Sol Piñeiro</h1>
-            <div class="hero-roles mb-3">
-              <span class="hero-role">Computer Engineer</span>
-              <span class="hero-role">Artificial Intelligence Researcher</span>
-            </div>
-            <div class="row">
-                <div class="col hero-links">
+  <body>
+        <header class="profile-header">
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+              <span class="theme-icon" aria-hidden="true">🌙</span>
+              <span class="theme-text">Dark</span>
+            </button>
+            <div class="hero-layout">
+                <div class="hero-heading">
+                    <p class="hero-kicker mb-2">PORTFOLIO</p>
+                    <h1 class="mb-2 text-white hero-title"><span>Eugenia Sol</span><span>Piñeiro</span></h1>
+                </div>
+                <div class="hero-copy">
+                    <p class="hero-roles mb-3">Artificial Intelligence Engineer & Researcher</p>
+                    <p class="hero-summary">I build AI systems that ship and publish. From foundation models and RAG pipelines in production to Transformer-based anomaly detection in medical imaging. I work across the full stack of applied Deep Learning, in both industry and research.</p>
+                    <div class="hero-links">
                     <a href="https://github.com/eugepineiro" class="btn icon">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -48,13 +56,10 @@
                         </span>
                         <span class="text-white">Google Scholar</span>
                     </a>
-                    <button id="theme-toggle" class="theme-toggle ms-2" type="button" aria-pressed="false" aria-label="Toggle dark mode">
-                      <span class="theme-icon" aria-hidden="true">🌙</span>
-                      <span class="theme-text">Dark</span>
-                    </button>
+                    </div>
                 </div>
-            </div> 
-        </div> 
+            </div>
+        </header>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -66,7 +71,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
     -->
     
-    <div class="container">
+    <main class="container portfolio-main">
+        <p class="section-label">Selected Work</p>
 
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -1340,7 +1346,7 @@
           </div>
 
         
-      </div>
+      </main>
 
 
       

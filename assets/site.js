@@ -578,9 +578,7 @@ function buildTagFilter() {
   wrapper.className = 'tag-filter-bar';
   wrapper.innerHTML = [
     '<p class="tag-filter-label">Filter by tag</p>',
-    '<select id="tag-filter" class="tag-filter-select" aria-label="Filter cards by tag">',
-    '  <option value="">All tags</option>',
-    '</select>'
+    '<div id="tag-filter" class="tag-filter-options" role="list" aria-label="Filter cards by tag"></div>'
   ].join('');
 
   nav.parentNode.insertBefore(wrapper, nav.nextSibling);
@@ -593,6 +591,11 @@ function getActivePane() {
     return active;
   }
   return document.querySelector('.tab-content .tab-pane');
+}
+
+function applySectionAccent(pane) {
+  var section = pane && pane.id ? pane.id : 'highlights';
+  document.documentElement.setAttribute('data-section', section);
 }
 
 function getPaneTags(pane) {
@@ -609,34 +612,67 @@ function getPaneTags(pane) {
   });
 }
 
-function populateTagFilter(select, pane, selectedTag) {
-  if (!select || !pane) {
+function populateTagFilter(filter, pane, selectedTags, showAllTags, onSelect, onToggleShowAll) {
+  if (!filter || !pane) {
     return;
   }
 
+  var maxVisibleTags = 8;
   var tags = getPaneTags(pane);
-  select.innerHTML = '<option value="">All tags</option>';
+  var activeTags = selectedTags.filter(function (tag) {
+    return tags.indexOf(tag) !== -1;
+  });
+  var visibleTags = showAllTags ? tags : tags.slice(0, maxVisibleTags);
+  filter.innerHTML = '';
 
-  tags.forEach(function (tag) {
-    var option = document.createElement('option');
-    option.value = tag;
-    option.textContent = tag;
-    select.appendChild(option);
+  function addChip(label, value) {
+    var chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'tag-filter-chip';
+    chip.textContent = label;
+    chip.dataset.tag = value;
+
+    var isActive = value ? activeTags.indexOf(value) !== -1 : activeTags.length === 0;
+    if (isActive) {
+      chip.classList.add('is-active');
+      chip.setAttribute('aria-pressed', 'true');
+    } else {
+      chip.setAttribute('aria-pressed', 'false');
+    }
+
+    chip.addEventListener('click', function () {
+      onSelect(value);
+    });
+
+    filter.appendChild(chip);
+  }
+
+  addChip('All tags', '');
+  visibleTags.forEach(function (tag) {
+    addChip(tag, tag);
   });
 
-  if (selectedTag && tags.indexOf(selectedTag) !== -1) {
-    select.value = selectedTag;
-  } else {
-    select.value = '';
+  if (tags.length > maxVisibleTags) {
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'tag-filter-chip tag-filter-toggle';
+    toggle.textContent = showAllTags ? 'Show fewer tags' : 'Show all tags';
+    toggle.setAttribute('aria-expanded', String(showAllTags));
+    toggle.addEventListener('click', function () {
+      onToggleShowAll(!showAllTags);
+    });
+    filter.appendChild(toggle);
   }
 }
 
-function applyTagFilter(pane, selectedTag) {
+function applyTagFilter(pane, selectedTags) {
   if (!pane) {
     return;
   }
 
-  var normalized = (selectedTag || '').trim().toLowerCase();
+  var normalizedTags = selectedTags.map(function (tag) {
+    return tag.trim().toLowerCase();
+  }).filter(Boolean);
   var cards = Array.from(pane.querySelectorAll('.card'));
 
   cards.forEach(function (card) {
@@ -645,26 +681,55 @@ function applyTagFilter(pane, selectedTag) {
       return;
     }
 
-    if (!normalized) {
+    if (!normalizedTags.length) {
       col.style.display = '';
       return;
     }
 
-    var hasTag = Array.from(card.querySelectorAll('.lang-tag')).some(function (tagNode) {
-      return tagNode.textContent.trim().toLowerCase() === normalized;
+    var cardTags = Array.from(card.querySelectorAll('.lang-tag')).map(function (tagNode) {
+      return tagNode.textContent.trim().toLowerCase();
     });
 
-    col.style.display = hasTag ? '' : 'none';
+    var hasAllTags = normalizedTags.every(function (tag) {
+      return cardTags.indexOf(tag) !== -1;
+    });
+
+    col.style.display = hasAllTags ? '' : 'none';
   });
 }
 
 function setupTagFiltering() {
-  var select = buildTagFilter();
-  if (!select) {
+  var filter = buildTagFilter();
+  if (!filter) {
     return;
   }
 
   var filterByPane = {};
+  var showAllByPane = {};
+
+  function renderFilter(pane, selectedTags) {
+    populateTagFilter(filter, pane, selectedTags, Boolean(showAllByPane[pane.id]), function (value) {
+      var current = filterByPane[pane.id] || [];
+      var next;
+
+      if (!value) {
+        next = [];
+      } else if (current.indexOf(value) !== -1) {
+        next = current.filter(function (tag) {
+          return tag !== value;
+        });
+      } else {
+        next = current.concat(value);
+      }
+
+      filterByPane[pane.id] = next;
+      renderFilter(pane, next);
+      applyTagFilter(pane, next);
+    }, function (showAll) {
+      showAllByPane[pane.id] = showAll;
+      renderFilter(pane, filterByPane[pane.id] || []);
+    });
+  }
 
   function syncActivePane() {
     var pane = getActivePane();
@@ -672,22 +737,13 @@ function setupTagFiltering() {
       return;
     }
 
-    var selected = filterByPane[pane.id] || '';
-    populateTagFilter(select, pane, selected);
-    applyTagFilter(pane, select.value);
+    applySectionAccent(pane);
+    var selected = filterByPane[pane.id] || [];
+    renderFilter(pane, selected);
+    applyTagFilter(pane, selected);
   }
 
   syncActivePane();
-
-  select.addEventListener('change', function () {
-    var pane = getActivePane();
-    if (!pane || !pane.id) {
-      return;
-    }
-
-    filterByPane[pane.id] = select.value;
-    applyTagFilter(pane, select.value);
-  });
 
   var tabButtons = Array.from(document.querySelectorAll('#nav-tab [data-bs-toggle="tab"]'));
   tabButtons.forEach(function (button) {

@@ -8,6 +8,8 @@
   --accent: #534ab7;
   --section-accent: #534ab7;
   --section-accent-text: #ffffff;
+  --section-accent-decoration: rgba(83, 74, 183, 0.45);
+  --card-text: #3e3b37;
   --tag-bg: #eeedfe;
   --tag-text: #3c3489;
 }
@@ -15,16 +17,19 @@
 html[data-section="projects"] {
   --section-accent: #68bde6;
   --section-accent-text: #10384f;
+  --section-accent-decoration: rgba(104, 189, 230, 0.55);
 }
 
 html[data-section="papers"] {
   --section-accent: #e99dbc;
   --section-accent-text: #58273b;
+  --section-accent-decoration: rgba(233, 157, 188, 0.55);
 }
 
 html[data-section="conferences"] {
   --section-accent: #f8c48b;
   --section-accent-text: #654015;
+  --section-accent-decoration: rgba(248, 196, 139, 0.55);
 }
 
 html[data-theme="dark"] {
@@ -34,6 +39,8 @@ html[data-theme="dark"] {
   --muted: #aaa49a;
   --border: #35322d;
   --border-strong: #5a554d;
+  --section-accent-decoration: rgba(83, 74, 183, 0.72);
+  --card-text: #d4cec4;
   --tag-bg: #292641;
   --tag-text: #d9d4ff;
 }
@@ -41,16 +48,19 @@ html[data-theme="dark"] {
 html[data-theme="dark"][data-section="projects"] {
   --section-accent: #79c8ef;
   --section-accent-text: #0f2f42;
+  --section-accent-decoration: rgba(121, 200, 239, 0.72);
 }
 
 html[data-theme="dark"][data-section="papers"] {
   --section-accent: #f0acc8;
   --section-accent-text: #4f2034;
+  --section-accent-decoration: rgba(240, 172, 200, 0.72);
 }
 
 html[data-theme="dark"][data-section="conferences"] {
   --section-accent: #f7c78f;
   --section-accent-text: #4f3212;
+  --section-accent-decoration: rgba(247, 199, 143, 0.72);
 }
 
 html {
@@ -67,7 +77,7 @@ body {
 
 a {
   color: var(--section-accent);
-  text-decoration-color: color-mix(in srgb, var(--section-accent) 45%, transparent);
+  text-decoration-color: var(--section-accent-decoration);
   text-underline-offset: 0.18em;
 }
 
@@ -152,7 +162,7 @@ button:focus-visible {
 
 .hero-title {
   color: var(--text) !important;
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: clamp(3.6rem, 12vw, 8rem);
   font-weight: 700;
   letter-spacing: -0.055em;
@@ -418,7 +428,7 @@ nav {
 
 .card-text {
   margin-bottom: 1rem;
-  color: color-mix(in srgb, var(--text) 78%, var(--muted));
+  color: var(--card-text);
   font-size: 0.95rem;
 }
 

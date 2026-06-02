@@ -58,14 +58,20 @@
   var initialTheme = getStoredTheme() || getSystemTheme();
   applyTheme(initialTheme);
 
-  media.addEventListener('change', function (event) {
+  function handleSystemThemeChange(event) {
     if (getStoredTheme()) {
       return;
     }
 
     var nextTheme = event.matches ? 'dark' : 'light';
     setTheme(nextTheme, false);
-  });
+  }
+
+  if (typeof media.addEventListener === 'function') {
+    media.addEventListener('change', handleSystemThemeChange);
+  } else if (typeof media.addListener === 'function') {
+    media.addListener(handleSystemThemeChange);
+  }
 
   document.addEventListener('DOMContentLoaded', function () {
     var button = document.getElementById('theme-toggle');

@@ -162,7 +162,7 @@ button:focus-visible {
 
 .hero-title {
   color: var(--text) !important;
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   font-size: clamp(3.6rem, 12vw, 8rem);
   font-weight: 700;
   letter-spacing: -0.055em;
